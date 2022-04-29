@@ -122,10 +122,10 @@ func getPlatformCommand(cmds []PlatformCommand) []string {
 	eq := strings.EqualFold
 	for _, c := range cmds {
 		if eq(c.OperatingSystem, runtime.GOOS) {
-			command = strings.Split(os.ExpandEnv(c.Command), " ")
+			command = strings.Split(c.Command, " ")
 		}
 		if eq(c.OperatingSystem, runtime.GOOS) && eq(c.Architecture, runtime.GOARCH) {
-			return strings.Split(os.ExpandEnv(c.Command), " ")
+			return strings.Split(c.Command, " ")
 		}
 	}
 	return command
